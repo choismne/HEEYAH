@@ -1,6 +1,7 @@
 package com.test1.jpa_exercise.get_demo;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Repository;
@@ -20,7 +21,11 @@ public class getDemoRepository {
     }
 
     public List<users> findUsers(){
-        return entityManager.createQuery("SELECT u FROM users u", users.class)
-                .getResultList();
+        TypedQuery<users> result =  entityManager.createQuery("SELECT u FROM users u", users.class);
+        return result.getResultList();
+    }
+
+    public void save(users user){
+        entityManager.persist(user);
     }
 }

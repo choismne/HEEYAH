@@ -18,4 +18,7 @@ public class getDemoService {
         return getDemoRepository.findUsers();
     }
 
+    public void save(users user){
+        getDemoRepository.save(user);
+    }
 }
